@@ -1,0 +1,94 @@
+*Custom Compiler Version S-2021.09
+*Sun Feb 27 19:48:04 2022
+
+*.SCALE METER
+*.LDD
+.GLOBAL gnd! vdd!
+****************************
+* Library          : carry_look_ahead_adder_mahima
+* Cell             : not
+* View             : schematic
+* View Search List : auCdl schematic
+* View Stop List   : auCdl
+****************************
+.subckt not vin vout
+*.PININFO vin:I vout:O
+MM0 vout vin net18 net18 p105 w=0.1u l=0.03u nf=1 m=1
+MM1 vout vin gnd! gnd! n105 w=0.1u l=0.03u nf=1 m=1
+.ends not
+
+****************************
+* Library          : carry_look_ahead_adder_mahima
+* Cell             : xor_gate
+* View             : schematic
+* View Search List : auCdl schematic
+* View Stop List   : auCdl
+****************************
+.subckt xor_gate a b ou vt_bulk_n_gnd!
+*.PININFO a:I b:I ou:O vt_bulk_n_gnd!:B
+XI35 a net81 not
+XI36 b net83 not
+MM33 ou net83 a vt_bulk_n_gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM34 ou b net81 vt_bulk_n_gnd! n105 w=0.1u l=0.03u nf=1 m=1
+.ends xor_gate
+
+****************************
+* Library          : carry_look_ahead_adder_mahima
+* Cell             : and_gate
+* View             : schematic
+* View Search List : auCdl schematic
+* View Stop List   : auCdl
+****************************
+.subckt and_gate a b out vt_bulk_n_gnd!
+*.PININFO a:I b:I out:O vt_bulk_n_gnd!:B
+MM25 out net49 a vt_bulk_n_gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM24 out a b vt_bulk_n_gnd! n105 w=0.1u l=0.03u nf=1 m=1
+XI23 a net49 not
+.ends and_gate
+
+****************************
+* Library          : carry_look_ahead_adder_mahima
+* Cell             : carry_adder_4_bit
+* View             : schematic
+* View Search List : auCdl schematic
+* View Stop List   : auCdl
+****************************
+.subckt carry_adder_4_bit A0 A1 A2 A3 B0 B1 B2 B3 C0 C1 C2 C3 C4 G0 G1 G2 G3 P0
++ P1 P2 P3 S0 S1 S2 S3 gnd! vdd!
+*.PININFO A0:I A1:I A2:I A3:I B0:I B1:I B2:I B3:I C0:I C1:O C2:O C3:O C4:O G0:I
+*.PININFO G1:I G2:I G3:I P0:I P1:I P2:I P3:I S0:O S1:O S2:O S3:O gnd!:B vdd!:B
+XI59 C0 P0 S0 gnd! xor_gate
+XI58 P3 C3 S3 gnd! xor_gate
+XI57 P2 C2 S2 gnd! xor_gate
+XI56 P1 C1 S1 gnd! xor_gate
+XI3 A3 B3 P3 gnd! xor_gate
+XI2 A2 B2 P2 gnd! xor_gate
+XI1 A1 B1 P1 gnd! xor_gate
+XI0 A0 B0 P0 gnd! xor_gate
+XI7 A3 B3 G3 gnd! and_gate
+XI6 A2 B2 G2 gnd! and_gate
+XI5 A1 B1 G1 gnd! and_gate
+XI4 A0 B0 G0 gnd! and_gate
+MM16 net51 P3 net53 vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM15 net57 P2 net53 vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM14 net60 P1 net53 vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM13 net88 P0 net53 vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM12 net39 C0 net53 vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM11 net51 G3 net57 vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM10 net57 G2 net60 vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM9 net60 G1 net88 vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM8 net88 G0 net39 vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM27 net88 P0 net84 gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM24 net60 G1 gnd! gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM23 net51 G3 gnd! gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM22 net57 G2 gnd! gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM21 net88 G0 gnd! gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM20 net84 C0 gnd! gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM19 net60 P1 net88 gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM18 net57 P2 net60 gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM17 net51 P3 net57 gnd! n105 w=0.1u l=0.03u nf=1 m=1
+XI31 net51 C4 not
+XI30 net57 C3 not
+XI29 net60 C2 not
+XI28 net88 C1 not
+.ends carry_adder_4_bit
