@@ -47,7 +47,7 @@ Using equation (1), (2) and (3), carry-out equations for 4-bit CLA can be writte
 - Synopsys 28nm PDK:  The Synopsys 28nm Process Design Kit(PDK) was used in creation and simulation of the above designed circuit.
 
 ## Inverter
-### Iverter Schematic
+### Inverter Schematic
 ![not](https://user-images.githubusercontent.com/100534193/156118454-6998aad1-c245-4f46-a396-d2c9bb561720.png)
 
 ### Inverter Symbol
