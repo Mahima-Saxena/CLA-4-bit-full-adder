@@ -9,13 +9,14 @@ This repository presents the design of 4-bit CLA adder. Performance improvement 
 - AND and XOR implementation using pass transistor logic
 - 4 bit Carry Look Ahead Adder
 - Simulation Results
+- Parameters calculated for 4 bit improved CLA
 - Conclusion
 - Author
 - Acknowledgements
 - References
 
  ## Abstract
-Static CMOS logic based CLA adders are most common and widely used adder topology due to its high robustness and driving power. However, using complementary pair of N-channel CMOS (NMOS) and P-channel CMOS (PMOS) makes the number of transistors in circuit high. This high number of transistors accounts for high input impedance for signals. As a result, delay increases due to increased RC time  constant. However, an improvement can be achieved by utilizing a combination of static CMOS logic with other logic techniques. The propose design uses a  Pass Transistor Logic of AND and XOR Gates. In order to validate the performance of the proposed CLA circuit, verification has been done by conduction simulation using Synopsys Custom Compiler. The proposed design helps in decreasing the dealay and the tranistor count also decreases with in the design.
+Static CMOS logic based CLA adders are most common and widely used adder topology due to its high robustness and driving power. However, using complementary pair of N-channel CMOS (NMOS) and P-channel CMOS (PMOS) makes the number of transistors in circuit high. This high number of transistors accounts for high input impedance for signals. As a result, delay increases due to increased RC time  constant. However, an improvement can be achieved by utilizing a combination of static CMOS logic with other logic techniques. The propose design uses a  Pass Transistor Logic of AND and XOR Gates. In order to validate the performance of the proposed CLA circuit, verification has been done by conducting simulation using Synopsys Custom Compiler. The proposed design helps in decreasing the dealay and the tranistor count also decreases with in the design.
 
 ## Detailed Explanation with Reference circuit details
 ![adder_design](https://user-images.githubusercontent.com/100534193/156117492-64a3e9c8-d17d-4cb9-a584-3664cb83e580.png)
@@ -54,14 +55,15 @@ Using equation (1), (2) and (3), carry-out equations for 4-bit CLA can be writte
 
 ## AND Implemantaion using PTL
 ### AND Schematic
-![image](https://user-images.githubusercontent.com/100534193/156118790-3352f95f-e4b9-4f68-9526-80d67cca5524.png)
+![image](https://user-images.githubusercontent.com/100534193/156124333-a6265fc3-ede1-47e2-bffd-8247b754d560.png)
 
 ### AND Symbol
 ![image](https://user-images.githubusercontent.com/100534193/156118907-8ad9b2ba-078b-46ae-83f4-d652c74a34e1.png)
 
 ## XOR implemantation using PTL
 ### XOR schematic
-![image](https://user-images.githubusercontent.com/100534193/156119079-955fa35e-ecfb-435f-8294-7ad89983076f.png)
+![image](https://user-images.githubusercontent.com/100534193/156124300-14d6f677-02ae-4384-b1cf-fce6a9cc834b.png)
+
 
 ### XOR Symbol
 ![image](https://user-images.githubusercontent.com/100534193/156119201-9fdfb233-018f-42e2-81ff-640fa1f8332d.png)
@@ -88,7 +90,7 @@ Using equation (1), (2) and (3), carry-out equations for 4-bit CLA can be writte
   
   
 ## Conclusion
-The repository presents the design and simulation of 4 bit CLA adder using CMOS mirror logic on 28nm technology node of Synopsys.A improved version of CLA  design adopted was successfully done and 4 bit binary addition is verified from output waveforms. Area gets reduce to large extent by ubsing PTL logic for AND and XOR gates when compared with conventional static CMOS.since number of tranistors useed are 90 here. All the Analysis is verified on 28nm technology node.
+The repository presents the design and simulation of 4 bit CLA adder on 28nm technology node of Synopsys. A improved version of CLA  design adopted was successfully done and 4 bit binary addition was verified from output waveforms.Since number of tranistors used are 90. Area gets reduce to large extent by using PTL logic for AND and XOR gates when compared with conventional static CMOS.All the Analysis is verified on 28nm technology node.
 
 ## Author
 -  Mahima Saxena, BTech Electronics and commuincations, ABESEC, Ghaziabad, Uttar Pradesh.
